@@ -61,6 +61,8 @@ def post():
 
 @app.route('/post',methods=['POST'])
 def add_post():
+    urlparse.uses_netloc.append("postgres")
+    url = urlparse.urlparse(os.environ["DATABASE_URL"])
     conn = psycopg2.connect(database=url.path[1:],user=url.username,password=url.password,host=url.hostname,port=url.port)
     temp=conn.cursor()
     temp.execute("INSERT INTO blogspot (author,post,day,time) VALUES (%s,%s,%s,%s)",[request.form['title'],request.form['blogpost'],strftime("%d %b %Y ", gmtime()),strftime("%H:%M:%S ", gmtime())])
@@ -71,6 +73,8 @@ def add_post():
 
 @app.route('/blog',methods=['GET'])
 def blog():
+    urlparse.uses_netloc.append("postgres")
+    url = urlparse.urlparse(os.environ["DATABASE_URL"])  
     conn = psycopg2.connect(database=url.path[1:],user=url.username,password=url.password,host=url.hostname,port=url.port)
     temp=conn.cursor()
     temp.execute("SELECT * FROM blogspot ORDER BY id desc")
@@ -85,6 +89,8 @@ def blog():
 @app.route('/blog',methods=['POST'])
 def add_comment():
     p=int(request.form['postid'])
+    urlparse.uses_netloc.append("postgres")
+    url = urlparse.urlparse(os.environ["DATABASE_URL"])  
     conn = psycopg2.connect(database=url.path[1:],user=url.username,password=url.password,host=url.hostname,port=url.port)
     temp=conn.cursor()
     temp.execute("SELECT comment FROM blogspot WHERE id=(%s)",[p])
