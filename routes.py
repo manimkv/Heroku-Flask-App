@@ -5,6 +5,7 @@ from flask import Flask, render_template, request
 from time import *
 import psycopg2  
 import os
+import urlparse
 import db
 app = Flask(__name__)
 app.config.from_object(__name__)
@@ -53,7 +54,7 @@ def log():
             return redirect(url_for('post'))
     return render_template('log.html', error=error)
 
-@app.route('/post',methods=['POST'])
+@app.route('/post')
 @login_required
 def post():
 	return render_template('post.html')
