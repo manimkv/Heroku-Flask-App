@@ -3,7 +3,7 @@
 
 <h2>Post Here</h2>
     <form action="{{ url_for('add_post') }}" method=post>
-        Title:<input type=text size=71 name=title>
+        <font color="red">Title:<font/><input type=text size=71 name=title>
         <br/>
         <textarea name=blogpost rows=20 cols=74></textarea>
         <br/><input type=submit Style = "color:red" value=Post>
