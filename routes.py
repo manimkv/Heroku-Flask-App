@@ -1,7 +1,7 @@
 from flask import *
 from functools import wraps
 from flask import Flask, render_template, request
-#from forms import ContactForm
+from forms import ContactForm
 from time import *
 import psycopg2  
 import os
@@ -28,14 +28,14 @@ def welcome():
 @app.route('/about')
 def about():
     return render_template('about.html')
-'''
+
 @app.route('/contact', methods=['GET', 'POST'])
 def contact():
     form = ContactForm() 
     if request.method == 'POST':
         return 'Mail send.'
     elif request.method == 'GET':
-        return render_template('contact.html', form=form) ''' 
+        return render_template('contact.html', form=form) 
 
 @app.route('/logout')
 def logout():
