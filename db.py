@@ -13,6 +13,7 @@ conn = psycopg2.connect(database=url.path[1:],user=url.username,password=url.pas
 
 #con = psycopg2.connect(database='manimkv') 
 cur = conn.cursor()
+cur.execute("DROP TABLE IF EXISTS blogspot")
 cur.execute("CREATE TABLE blogspot(id serial,author text,post text,day text,time text,comment text)")
 conn.commit()
 conn.close()
