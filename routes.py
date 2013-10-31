@@ -5,6 +5,7 @@ from flask import Flask, render_template, request
 from time import *
 import psycopg2  
 import os
+import db
 app = Flask(__name__)
 app.config.from_object(__name__)
 app.secret_key = 'bozz'  
