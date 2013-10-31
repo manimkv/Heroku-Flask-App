@@ -67,7 +67,7 @@ def add_post():
     conn.close()
     return render_template('post.html')
 
-@app.route('/blog')
+@app.route('/blog',methods=['POST','GET'])
 def blog():
     conn = psycopg2.connect(database=url.path[1:],user=url.username,password=url.password,host=url.hostname,port=url.port)
     temp=conn.cursor()
