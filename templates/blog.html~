@@ -3,7 +3,7 @@
 <div class="kumbo">
   <h2>TECH WIZARD<h2> 
 </div>
-<div align="right"><h4><a href='/contact'>Contact Me</a><h4></div>
+<div align="right"><h4><a href='/contct'>Contact Me</a><h4></div>
 <body>
     <div class="kumbo">
     {% for post in posts %}
