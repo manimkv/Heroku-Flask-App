@@ -57,7 +57,7 @@ def log():
 def post():
 	return render_template('post.html')
 
-@app.route('/post',methods=['POST','GET'])
+@app.route('/post',methods=['POST'])
 def add_post():
     conn = psycopg2.connect(database=url.path[1:],user=url.username,password=url.password,host=url.hostname,port=url.port)
     temp=conn.cursor()
