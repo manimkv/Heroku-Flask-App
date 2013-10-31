@@ -63,7 +63,7 @@ def add_post():
     temp=conn.cursor()
     temp.execute("INSERT INTO blogspot (author,post,day,time) VALUES (%s,%s,%s,%s)",[request.form['title'],request.form['blogpost'],strftime("%d %b %Y ", gmtime()),strftime("%H:%M:%S ", gmtime())])
     conn.commit()
-    temp.close()
+    
     conn.close()
     return render_template('post.html')
 
