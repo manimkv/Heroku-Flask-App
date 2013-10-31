@@ -52,7 +52,7 @@ def log():
             return redirect(url_for('post'))
     return render_template('log.html', error=error)
 
-@app.route('/post')
+@app.route('/post',methods=['POST'])
 @login_required
 def post():
 	return render_template('post.html')
