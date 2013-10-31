@@ -57,7 +57,7 @@ def log():
 def post():
 	return render_template('post.html')
 
-@app.route('/post',methods=['POST'])
+@app.route('/post',methods=['POST','GET'])
 def add_post():
     conn = psycopg2.connect(database=url.path[1:],user=url.username,password=url.password,host=url.hostname,port=url.port)
     temp=conn.cursor()
@@ -80,7 +80,7 @@ def blog():
     else:
 	return render_template('blog.html',posts=posts)
 		
-@app.route('/blog',methods=['POST'])
+@app.route('/blog',methods=['POST','GET'])
 def add_comment():
     p=int(request.form['postid'])
     conn = psycopg2.connect(database=url.path[1:],user=url.username,password=url.password,host=url.hostname,port=url.port)
